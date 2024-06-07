@@ -40,21 +40,17 @@ public class ExploradorPolarGUI extends JFrame {
     }
 
     private void calcularCaminho(double distancia, double direcao) {
-        // Converter direção para radianos
+    
         double direcaoRadianos = Math.toRadians(direcao);
 
-        // Calcular componentes horizontal e vertical da distância caminhada
         double distanciaHorizontal = distancia * Math.cos(direcaoRadianos);
         double distanciaVertical = distancia * Math.sin(direcaoRadianos);
 
-        // Calcular distância e direção de retorno à base
         double distanciaRetorno = Math.sqrt(distanciaHorizontal * distanciaHorizontal + distanciaVertical * distanciaVertical);
         double direcaoRetorno = Math.toDegrees(Math.atan2(distanciaVertical, distanciaHorizontal));
 
-        // Ajustar a direção para estar entre 0 e 360 graus
         direcaoRetorno = (direcaoRetorno + 360) % 360;
 
-        // Exibir resultado
         resultadoLabel.setText(String.format("Distância de retorno: %.2f km\nDireção de retorno: %.2f graus ao norte do leste", distanciaRetorno, direcaoRetorno));
     }
 
